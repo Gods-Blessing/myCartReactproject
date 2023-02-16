@@ -6,9 +6,11 @@ import { updateDoc, arrayUnion, arrayRemove} from "firebase/firestore";
 
 
 function Favourites(){
+    // state mgmt. for the data 
     const [arr, setArr] = useState([]);
     // const [sort, setSort] = useState(false);
-
+    
+    //this is basically to  get the data from the db for rendering on the cart page 
     useEffect(()=>{
         document.title= "Cart";
             const unsub = onSnapshot(doc(db, "favouritescart", "fav"), (doc) => {
@@ -27,6 +29,7 @@ function Favourites(){
     }, []);
 
 
+    // used for sorting the cart itmes according to the price
     function handleSortdec(){
         const mast = [...arr];
             mast.sort((a,b)=>{
@@ -35,6 +38,8 @@ function Favourites(){
             setArr(mast);
     }
 
+
+// it's doesn't work right now. it unsorts the items
     function handleUnsort(){
             const unsub = onSnapshot(doc(db, "favouritescart", "fav"), (doc) => {
             const mast = [];
@@ -47,6 +52,7 @@ function Favourites(){
     }
 
 
+    // function for removing the itme from the db
     async function removingfromcart(product){
         // console.log(product)
         const washingtonRef = doc(db, "favouritescart", "fav");

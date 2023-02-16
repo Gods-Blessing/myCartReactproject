@@ -24,6 +24,7 @@ const Main = ()=>{
         <Navbar/>
         
         <div className="main-product-container">
+            {/* rendering the all the products on the page and passingthe data as props */}
             {list.map((data)=><Products key={data.id} data={data}/>)}
         </div>
     </>

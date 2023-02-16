@@ -11,7 +11,6 @@ import Product from "./components/Product/Product";
 
 function App() {
   const ans = useSelector((state)=>state.theme);
-  // console.log(ans);
   return (
       <BrowserRouter>
       <Routes>

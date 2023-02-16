@@ -6,9 +6,14 @@ import { Link } from "react-router-dom";
 import { themechange } from "../../reducers/themeReducer";
 
 const Navbar = ()=>{
+    // count for the count of products added to the cart
     const [count, setCount] = useState('0')
+
+    // state for the theme of the navbar
     const place = useSelector((state)=>state.theme)
     const dispatch = useDispatch();
+
+    // gettin the snapshot of the data from the backend
     useEffect(()=>{
         const unsub = onSnapshot(doc(db, "favouritescart", "fav"), (doc) => {
             const mast = [];
